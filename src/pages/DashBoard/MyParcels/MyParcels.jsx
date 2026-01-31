@@ -5,13 +5,18 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaEye, FaTrash, FaMoneyBillWave } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyParcels = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  const { data: parcels = [], isLoading, refetch } = useQuery({
+  const {
+    data: parcels = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["myParcels", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -111,6 +116,7 @@ const MyParcels = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Toaster position="top-center" />
       <div className="mb-6">
         <h1 className="text-3xl font-bold">My Parcels</h1>
         <p className="text-gray-600 mt-2">
@@ -144,8 +150,23 @@ const MyParcels = () => {
 
                   <td>
                     <div className="font-bold">{parcel.parcelTitle}</div>
-                    <div className="text-sm opacity-50">
-                      {parcel.trackingId?.slice(0, 8)}...
+
+                    <div className="flex items-center gap-2 text-sm opacity-60">
+                      {/* short tracking id */}
+                      <span>{parcel.trackingId?.slice(0, 8)}...</span>
+
+                      {/* copy icon */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard.writeText(parcel.trackingId);
+                          toast.success("Tracking ID copied!");
+                        }}
+                        className="btn btn-ghost btn-xs"
+                        title="Copy full tracking ID"
+                      >
+                        📋
+                      </button>
                     </div>
                   </td>
 
@@ -166,7 +187,7 @@ const MyParcels = () => {
                   <td>
                     <span
                       className={`badge ${getPaymentBadge(
-                        parcel.paymentType
+                        parcel.paymentType,
                       )} badge-lg font-bold`}
                     >
                       {getPaymentLabel(parcel.paymentType)}
