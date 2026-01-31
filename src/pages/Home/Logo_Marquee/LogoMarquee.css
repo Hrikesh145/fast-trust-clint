@@ -1,0 +1,102 @@
+.logo-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Gradient fade edges */
+.logo-marquee-wrapper::before,
+.logo-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--fallback-b1, oklch(var(--b1))), transparent);
+}
+
+.logo-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--fallback-b1, oklch(var(--b1))), transparent);
+}
+
+.logo-marquee {
+  display: flex;
+  gap: 4rem;
+  animation: scroll 30s linear infinite;
+  width: fit-content;
+}
+
+.logo-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-width: 150px;
+  height: 100px;
+}
+
+.logo-image {
+  max-width: 150px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.7);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode - show original colors */
+[data-theme="dark"] .logo-image {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* Hover effect - light mode */
+.logo-item:hover .logo-image {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.1);
+}
+
+/* Hover effect - dark mode (just scale, no filter change) */
+[data-theme="dark"] .logo-item:hover .logo-image {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-marquee {
+    gap: 2rem;
+    animation: scroll 20s linear infinite;
+  }
+  
+  .logo-item {
+    min-width: 120px;
+    height: 80px;
+  }
+  
+  .logo-image {
+    max-width: 120px;
+    max-height: 60px;
+  }
+}

@@ -1,0 +1,23 @@
+.animate-enter {
+  animation: slide-up 0.25s ease-out;
+}
+.animate-leave {
+  animation: fade-out 0.2s ease-in forwards;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}

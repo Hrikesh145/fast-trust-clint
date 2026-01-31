@@ -1,0 +1,11 @@
+/* Light mode hover */
+.service-card:hover {
+  background-color: rgb(164, 225, 89); /* green-100 */
+}
+
+/* Dark mode hover */
+[data-theme="dark"] .service-card:hover {
+  background-color: rgb(51, 65, 85); /* slate-700 */
+}
+
+
