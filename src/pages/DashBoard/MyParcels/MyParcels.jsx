@@ -6,24 +6,40 @@ import { FaEye, FaTrash, FaMoneyBillWave } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const MyParcels = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const {
     data: parcels = [],
     isLoading,
+    isError,
+    error,
     refetch,
   } = useQuery({
     queryKey: ["myParcels", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/parcels?email=${user.email}`);
+      const res = await axiosSecure.get(`/parcels/user?email=${user.email}`);
       return res.data;
     },
   });
+  useEffect(() => {
+    if (user?.email) {
+      queryClient.invalidateQueries({ queryKey: ["myParcels"] });
+    }
+  }, [user?.email, queryClient]);
+
+  useEffect(() => {
+    if (user?.email) {
+      queryClient.invalidateQueries({ queryKey: ["myParcels"] });
+    }
+  }, [user?.email, queryClient]);
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
