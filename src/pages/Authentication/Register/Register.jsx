@@ -213,7 +213,6 @@ const Register = () => {
           <button className="btn btn-secondary mt-4 text-black w-full">
             Register
           </button>
-
           <SocialLogin />
         </form>
       </div>
