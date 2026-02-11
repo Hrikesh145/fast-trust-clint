@@ -102,6 +102,18 @@ const DashBoardLayout = () => {
                 Payment History
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/dashboard/pendingRiders" className={navLinkClass}>
+                <FiCreditCard className="text-lg" />
+                Pending Riders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/activeRiders" className={navLinkClass}>
+                <FiCreditCard className="text-lg" />
+                Active Riders
+              </NavLink>
+            </li>
 
             <li>
               <NavLink to="/dashboard/track" className={navLinkClass}>
