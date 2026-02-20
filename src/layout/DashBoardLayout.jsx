@@ -7,6 +7,7 @@ import {
   FiMapPin,
   FiUser,
   FiMenu,
+  FiUserCheck,
 } from "react-icons/fi";
 import Logo from "../pages/shared/Logo/Logo";
 
@@ -74,9 +75,7 @@ const DashBoardLayout = () => {
             <Logo />
             <div className="mt-3">
               <h3 className="text-base font-semibold">Welcome back 👋</h3>
-              <p className="text-sm text-base-content/70">
-                Quick access menu
-              </p>
+              <p className="text-sm text-base-content/70">Quick access menu</p>
             </div>
           </div>
 
@@ -126,6 +125,13 @@ const DashBoardLayout = () => {
               <NavLink to="/dashboard/profile" className={navLinkClass}>
                 <FiUser className="text-lg" />
                 Update Profile
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/dashboard/admin-users" className={navLinkClass}>
+                <FiUserCheck className="text-lg" />
+                Admin Users
               </NavLink>
             </li>
 

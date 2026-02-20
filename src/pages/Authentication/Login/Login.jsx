@@ -64,7 +64,7 @@ const Login = () => {
         <div>
           <p className="">
             New to this website?{" "}
-            <Link className=" btn-link text-secondary" to="/register">
+            <Link state={{from}} className=" btn-link text-secondary" to="/register">
               Register
             </Link>
           </p>

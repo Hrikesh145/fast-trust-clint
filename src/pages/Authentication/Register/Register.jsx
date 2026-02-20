@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../socialLogin/socialLogin";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import useAxios from "../../../hooks/useAxios"; // ✅ your axios instance
+import useAxios from "../../../hooks/useAxios"; 
 
 const Register = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -13,7 +13,7 @@ const Register = () => {
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
-  const axiosPublic = useAxios(); // ✅ baseURL = http://localhost:3000/
+  const axiosPublic = useAxios(); // baseURL = http://localhost:3000/
 
   const IMGBB_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 

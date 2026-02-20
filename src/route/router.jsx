@@ -15,6 +15,7 @@ import TrackParcel from "../pages/DashBoard/TrackParcel/Trackparcel";
 import BeARider from "../pages/BeARider/BeARider";
 import PendingRiders from "../pages/BeARider/PendingRiders";
 import ActiveRiders from "../pages/BeARider/ActiveRiders";
+import AdminUsers from "../pages/DashBoard/AdminUsers/AdminUsers";
 
 
 export const router = createBrowserRouter([
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path:"track",
         Component:TrackParcel
+      },
+      {
+        path:"admin-users",
+        Component:AdminUsers
       }
     ]
 
